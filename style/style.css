@@ -1,0 +1,534 @@
+@import url("./fonts.css");
+@import url("./normalize.css");
+
+
+*{
+    text-decoration: none;
+    font-family: Space Grotesk;
+    list-style-type: none;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/*========================================
+                COLORS
+==========================================*/
+
+:root{
+    --bg-color: #ffffff;
+    --primary-color: #B9FF66;
+    --secondary-color: #191A23;
+    --terciary-color: #F3F3F3;
+
+    --font-regular: 400;
+    --font-normal: 500;
+
+    --header-height-mobile: 100px;
+}
+
+/*========================================
+            SETTING LAYOUT
+==========================================*/
+
+.content{
+    display: grid;
+    grid-template-areas: 
+    ". header ."
+    ". main ."
+    ". footer .";
+    grid-template-columns: 1fr minmax(auto, 1440px) 1fr;
+    grid-template-rows: var(--header-height-mobile) auto 520px;
+    min-height: 100dvh;
+    background-color: var(--bg-color);
+}
+
+header{
+    grid-area: header;
+}
+
+main{
+    grid-area: main;
+    max-width: 1200px;
+    margin: auto;
+}
+
+footer{
+    grid-area: footer;
+}
+
+svg{
+    width: 30px;
+    height: 30px;
+}
+
+/*========================================
+            LOGO COLORS SETTING
+==========================================*/
+
+.logo__link__box a{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-weight: var(--font-normal);
+}
+
+.logo__link__box a span{
+    font-size: 2rem;
+}
+
+
+.logo__link__box.black__logo a svg path,
+.logo__link__box.black__logo a{
+    color: var(--secondary-color);
+    fill: var(--secondary-color);
+}
+
+.logo__link__box.white__logo a svg path,
+.logo__link__box.white__logo a{
+    color: var(--bg-color);
+    fill: var(--bg-color);
+}
+
+/*========================================
+            BUTTON BASES SETTING
+==========================================*/
+
+.bases__style__button{
+    padding: 0 20px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 10px;
+    cursor: pointer;
+    height: 50px;
+}
+
+.bases__style__button.white__button{
+    background-color: var(--bg-color);
+    color: var(--secondary-color);
+    transition: background-color .2s ease-in-out, color .2s ease-in-out;
+    max-width: fit-content;
+}
+
+.bases__style__button.black__button{
+    background-color: var(--secondary-color);
+    color: var(--bg-color);
+    transition: background-color .2s ease-in-out, color .2s ease-in-out;
+    max-width: fit-content;
+}
+
+.bases__style__button.green__button{
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border-color: var(--primary-color);
+    transition: background-color .2s ease-in-out, color .2s ease-in-out, border-color .2s ease-in-out;
+    max-width: fit-content;
+}
+
+.bases__style__button.white__button:hover{
+    background-color: var(--secondary-color);
+    color: var(--bg-color);
+}
+
+.bases__style__button.black__button:hover{
+    background-color: var(--bg-color);
+    color: var(--secondary-color);
+}
+
+.bases__style__button.green__button:hover{
+    background-color: var(--secondary-color);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+/*========================================
+                HEADER
+==========================================*/
+
+header .header__content__container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+}
+
+header .header__content__container .logo__link__box{
+    z-index: 20;
+}
+
+header .header__content__container .logo__link__box a svg{
+    width: 25px;
+    height: 25px;
+}
+
+header .header__content__container .logo__link__box a span{
+    font-size: 1.5rem;
+}
+
+header .header__content__container .open__menu__button{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    align-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    outline: 1px solid transparent;
+    transition: outline .2s ease-in-out;
+    border-radius: 10px;
+    z-index: 20;
+    position: relative;
+}
+
+header .header__content__container .open__menu__button:active{
+    outline: 1px solid var(--secondary-color);
+}
+
+header .header__content__container .open__menu__button span{
+    width: 1.8rem;
+    height: 2px;
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+    transition: transform .5s ease-in-out, opacity .5s ease-in-out, top .5s ease-in-out, bottom .5s ease-in-out;
+    position: absolute;
+}
+
+header .header__content__container .open__menu__button span:nth-child(1){
+    top: 10px;
+}
+
+header .header__content__container .open__menu__button span:nth-child(3){
+    bottom: 10px;
+}
+
+header .header__content__container .navigation{
+    display: flex;
+    position: fixed;
+    padding: 110px 1.5rem;
+    left: 100%;
+    top: 0;
+    height: 100dvh;
+    background-color: var(--bg-color);
+    width: 100%;
+    flex-direction: column;
+    gap: 2rem;
+    transition: left .5s ease-in-out,box-shadow .5s ease-in-out;
+    z-index: 10;
+    box-shadow: -34px 0px 70px -2px rgba(0, 0, 0, 0);
+}
+
+header .header__content__container .navigation.open{
+    left: 0;
+    box-shadow: -34px 0px 70px -2px rgba(0,0,0,0.39);
+}
+
+header .header__content__container .navigation .bases__style__button{
+    width: 80%;
+    max-width: initial;
+    margin: 0 auto;
+}
+
+header .header__content__container .navigation .navigation__box .navigation__box__items{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+header .header__content__container .navigation .navigation__box .navigation__box__items .navigation__item{
+    padding: 10px;
+}
+
+header .header__content__container .navigation .navigation__box .navigation__box__items .navigation__item a{
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+}
+
+.navigation.open ~ .open__menu__button span:nth-child(1){
+    top: 20px;
+    transform: rotate(45deg);
+}
+
+.navigation.open ~ .open__menu__button span:nth-child(2){
+    opacity: 0;
+}
+
+.navigation.open ~ .open__menu__button span:nth-child(3){
+    bottom: 18px;
+    transform: rotate(-45deg);
+}
+
+/*========================================
+                    MAIN
+==========================================*/
+
+/*========================================
+            HEADERS ARTICLES SETTINGS
+==========================================*/
+
+.section__header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 2.5rem;
+    gap: 1.5rem;
+}
+
+.section__header .section__header__title{
+    background-color: var(--primary-color);
+    padding: .3rem .7rem;
+    border-radius: 7px;
+    font-weight: var(--font-regular);
+    font-size: 2rem;
+    text-wrap: balance;
+}
+
+.section__header__text{
+    text-align: center;
+    text-wrap: pretty;
+}
+
+/*========================================
+                    MAIN
+==========================================*/
+
+main .main__content__container .home__container{
+    padding: 0 1.5rem;
+    height: calc(100dvh - var(--header-height-mobile));
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content 1fr auto auto;
+    align-items: center;
+    justify-items: center;
+}
+
+main .main__content__container .home__container h1{
+    margin: 0;
+    font-size: 3rem;
+}
+
+main .main__content__container .home__container p{
+    padding: 0rem 0 2rem 0rem;
+    text-wrap: pretty;
+}
+
+main .main__content__container .home__container button{
+    max-width: none;
+    width: 100%;
+    margin-bottom: 3rem;
+}
+
+main .main__content__container .home__container .home__illustration{
+    width: 100%;
+    height: 70%;
+    grid-area: 2;
+    transform: scale(1.1);
+}
+
+/*========================================
+            BRANDS CONTAINER
+==========================================*/
+
+main .main__content__container .brands__container{
+    padding: 2rem 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(100px, 1fr));
+    grid-auto-rows: 30px;
+    align-items: center;
+    justify-items: center;
+    gap: 10px;
+}
+
+main .main__content__container .brands__container .brands__item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main .main__content__container .brands__container .brands__item svg{
+    width: 70px;
+    height: min-content;
+    opacity: .7;
+}
+
+/*========================================
+            SERVICES CONTAINER
+==========================================*/
+
+main .main__content__container .services__container{
+    padding: 2rem 1.5rem;
+    max-width: 1000px;
+    margin: auto;
+}
+
+main .main__content__container .services__container .services__wrapper{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+main .main__content__container .services__container .services__wrapper .card__services{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 100px 150px;
+    align-items: center;
+    justify-items: center;
+    padding: 2rem;
+    border: 1px solid var(--secondary-color);
+    border-bottom: 5px solid var(--secondary-color);
+    border-radius: 50px;
+}
+
+main .main__content__container .services__container .services__wrapper .card__services img{
+    width: 80%;
+}
+
+main .main__content__container .services__container .services__wrapper .card__services .bases__stlye__highlight{
+    grid-column: span 2;
+    justify-self: start;
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+}
+
+main .main__content__container .services__container .services__wrapper .card__services .bases__stlye__highlight span{
+    padding: .3rem .7rem;
+    border-radius: 10px;
+    font-size: 1.5rem;
+}
+
+main .main__content__container .services__container .services__wrapper .card__services a{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    align-self: flex-end;
+    justify-self: start;
+}
+
+main .main__content__container .services__container .services__wrapper .card__services a span{
+    text-wrap: nowrap;
+    display: none;
+}
+
+main .main__content__container .services__container .services__wrapper .card__services a .learnMore__box__icon{
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+}
+
+main .main__content__container .services__container .services__wrapper .card__services a .learnMore__box__icon::before{
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    top: 100%;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    transition: top .2s ease-in-out, left .2s ease-in-out;
+}
+
+main .main__content__container .services__container .services__wrapper .card__services a .learnMore__box__icon svg{
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+main .main__content__container .services__container .services__wrapper .card__services a:hover .learnMore__box__icon::before,
+main .main__content__container .services__container .services__wrapper .card__services a:active .learnMore__box__icon::before{
+    top: 0;
+    left: 0;
+    transform: translate(0,0);
+}
+
+main .main__content__container .services__container .services__wrapper .card__services a:hover svg path ,
+main .main__content__container .services__container .services__wrapper .card__services a:active svg path {
+    fill: var(--secondary-color);
+}
+
+.gray__card{
+    background-color: var(--terciary-color);
+}
+
+.black__card{
+    background-color: var(--secondary-color);
+}
+
+.green__card{
+    background-color: var(--primary-color);
+}
+
+.gray__card .bases__stlye__highlight span{
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.black__card .bases__stlye__highlight span{
+    background-color: var(--terciary-color);
+    color: var(--secondary-color);
+}
+
+.green__card .bases__stlye__highlight span{
+    background-color: var(--terciary-color);
+    color: var(--secondary-color);
+}
+
+.gray__card a .learnMore__box__icon{
+    background-color: var(--secondary-color);
+}
+
+.black__card a .learnMore__box__icon{
+    background-color: var(--terciary-color);
+}
+
+.green__card a .learnMore__box__icon{
+    background-color: var(--secondary-color);
+}
+
+.gray__card a span{
+    color: var(--secondary-color);
+}
+.black__card a span{
+    color: var(--terciary-color);
+}
+.green__card a span{
+    color: var(--secondary-color);
+}
+
+.gray__card a .learnMore__box__icon svg path{
+    fill: var(--primary-color);
+}
+.black__card a .learnMore__box__icon svg path{
+    fill: var(--secondary-color);
+}
+.green__card a .learnMore__box__icon svg path{
+    fill: var(--primary-color);
+}
+
+main .main__content__container .services__container .services__wrapper .gray__card .learnMore__box__icon::before{
+    background-color: var(--primary-color);
+}
+
+main .main__content__container .services__container .services__wrapper .black__card .learnMore__box__icon::before{
+    background-color: var(--primary-color);
+}
+
+main .main__content__container .services__container .services__wrapper .green__card .learnMore__box__icon::before{
+    background-color: var(--terciary-color);
+}
+
+
+/*========================================
+               ANIMATIONS
+==========================================*/
