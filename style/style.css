@@ -1,6 +1,9 @@
 @import url("./fonts.css");
 @import url("./normalize.css");
 
+*::selection{
+    background-color: #e6e6e6;
+}
 
 *{
     text-decoration: none;
@@ -375,6 +378,7 @@ header .header__content__container .navigation .navigation__box .navigation__box
     justify-content: center;
     padding-bottom: 2.5rem;
     gap: 1.5rem;
+    width: 100%;
 }
 
 .section__header .section__header__title{
@@ -457,6 +461,17 @@ main .main__content__container .home__container .home__illustration{
         grid-column: 2;
         transform: scale(1);
         padding-right: 2rem;
+    }
+    .section__header{
+        flex-direction: row;
+        gap: 2rem;
+        justify-content: start;
+    }
+    
+    .section__header__text{
+        text-align: start;
+        text-wrap: pretty;
+        max-width: 650px;
     }
 }
 

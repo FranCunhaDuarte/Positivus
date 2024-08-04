@@ -15,7 +15,7 @@ summarys.forEach(summary => {
     });
 })
 
-const formButtons=document.querySelectorAll('.form__contact__button');
+const formButtons=document.querySelectorAll('.services__wrapper');
 
 formButtons.forEach(formButton => {
     
