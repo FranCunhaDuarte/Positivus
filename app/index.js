@@ -36,24 +36,26 @@ window.sr=ScrollReveal();
         distance: '1rem',
         delay: 250
     })
-    sr.reveal('.revealLeft--1', {
-        duration: 1000,
-        origin: 'left',
-        distance: '1rem',
-        delay: 150
-    })
-    sr.reveal('.revealLeft--2', {
-        duration: 1000,
-        origin: 'left',
-        distance: '1rem',
-        delay: 250
-    })
-    sr.reveal('.revealLeft--3', {
-        duration: 1000,
-        origin: 'left',
-        distance: '1rem',
-        delay: 350
-    })
+    if(screen.width > 925){
+        sr.reveal('.revealLeft--1', {
+            duration: 1000,
+            origin: 'left',
+            distance: '1rem',
+            delay: 150
+        })
+        sr.reveal('.revealLeft--2', {
+            duration: 1000,
+            origin: 'left',
+            distance: '1rem',
+            delay: 250
+        })
+        sr.reveal('.revealLeft--3', {
+            duration: 1000,
+            origin: 'left',
+            distance: '1rem',
+            delay: 350
+        })
+    }
     sr.reveal('.revealRightIllustration', {
         duration: 1000,
         origin: 'right',
