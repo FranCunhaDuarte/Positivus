@@ -46,7 +46,6 @@
     ". footer .";
     grid-template-columns: 1fr minmax(auto, 1440px) 1fr;
     grid-template-rows: var(--header-height-mobile) auto auto;
-    min-height: 100vh;
     background-color: var(--bg-color);
 }
 
@@ -55,6 +54,10 @@ body{
     --sb-track-color: #ffffff;
     --sb-thumb-color: #191a23;
     --sb-size: 10px;
+}
+
+body.no-scroll{
+    overflow: hidden;
 }
 
 body::-webkit-scrollbar {
@@ -249,23 +252,23 @@ header .header__content__container .open__menu__button span:nth-child(3){
 }
 
 header .header__content__container .navigation{
+    position: absolute;
     display: flex;
-    position: fixed;
-    padding: 110px 1.5rem;
-    left: 100%;
+    padding: 110px 1.5rem 0 1.5rem;
+    right: -100%;
     top: 0;
     height: 100vh;
     background-color: var(--bg-color);
     width: 100%;
     flex-direction: column;
     gap: 2rem;
-    transition: left .5s ease-in-out,box-shadow .5s ease-in-out;
+    transition: right .5s ease-in-out,box-shadow .5s ease-in-out;
     z-index: 100;
     box-shadow: -34px 0px 70px -2px rgba(0, 0, 0, 0);
 }
 
 header .header__content__container .navigation.open{
-    left: 0;
+    right: 0;
     box-shadow: -34px 0px 70px -2px rgba(0,0,0,0.39);
 }
 
@@ -483,12 +486,11 @@ main .main__content__container .home__container .home__illustration{
 main .main__content__container .brands__container{
     padding: 3rem 1.5rem;
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(100px, 1fr));
-    grid-auto-rows: 30px;
+    display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    justify-items: center;
-    gap: 10px;
+    justify-content: space-between;
+    gap: 1rem;
     container: brands__container / inline-size;
 }
 
@@ -499,7 +501,7 @@ main .main__content__container .brands__container .brands__item{
 }
 
 main .main__content__container .brands__container .brands__item svg{
-    width: 70px;
+    width: 100px;
     height: min-content;
 }
 
@@ -509,6 +511,17 @@ main .main__content__container .brands__container .brands__item svg.brand__color
 }
 
 @container  (min-width: 700px){
+    main .main__content__container .brands__container{
+        padding: 3rem 1.5rem;
+        min-width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(100px, 1fr));
+        grid-auto-rows: 30px;
+        align-items: center;
+        justify-items: center;
+        gap: 10px;
+        container: brands__container / inline-size;
+    }
     main .main__content__container .brands__container .brands__item svg{
         width: 100px;
     }
